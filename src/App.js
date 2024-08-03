@@ -14,7 +14,11 @@ function Home() {
 
   const url = `https://i.pinimg.com/originals/16/46/24/1646243661201a0892cc4b1a64fcbacf.jpg`;
   
-
+  const transformUrl = (originalUrl) => {
+    const oldBaseUrl = "http://localhost:8000";
+    const newBaseUrl = "https://easyshare-backend-0d13.onrender.com";
+    return originalUrl.replace(oldBaseUrl, newBaseUrl);
+  };
   useEffect(() =>{
     const getImage = async() =>{
       if(file){
@@ -23,6 +27,7 @@ function Home() {
         data.append("file", file);
 
         let respone = await uploadFile(data);
+        respone.path = transformUrl(respone.path);
         setResult(respone.path);
       }
     }
