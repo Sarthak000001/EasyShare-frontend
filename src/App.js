@@ -5,9 +5,11 @@ import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import About from './components/About';
 import Contact from './components/Contact';
+import Download from './components/Download'
 
 function Home() {
   const [file,setFile] = useState('');
+  const [password, setPassword] = useState('');
   const [result,setResult] = useState('');
 
   const fileInputRef = useRef();
@@ -19,26 +21,25 @@ function Home() {
     const newBaseUrl = "https://easyshare-backend-0d13.onrender.com";
     return originalUrl.replace(oldBaseUrl, newBaseUrl);
   };
-  useEffect(() =>{
-    const getImage = async() =>{
+
+    const getImage = async(e) =>{
+      e.preventDefault();
       if(file){
         const data = new FormData();
         data.append("name", file.name);
         data.append("file", file);
 
+        if (password) {
+          data.append("password", password);
+        }
         let respone = await uploadFile(data);
-        respone.path = transformUrl(respone.path);
         setResult(respone.path);
       }
     }
-    getImage();
-  },[file])
 
-  const onUploadClick = () =>{
-    fileInputRef.current.click()
-  }
 
-  return (
+
+    return (
       <>
       <div><Navbar /></div>
        <div className='container'>
@@ -47,17 +48,22 @@ function Home() {
         <h1>EasyShare</h1>
         <h1>Simple file sharing!</h1>
         <p>Upload and share the dowload link.</p>
-
-        <button onClick={()=>onUploadClick()}>Upload</button>
-        <input 
-          type='file'
-          ref={fileInputRef}
-          style={{display:'none'}}
-          onChange={(e)=>setFile(e.target.files[0])}
-        />
-
-       <a href={result} target='_blank'>{result}</a>
-
+        <form>
+            <input 
+              type='file'
+              ref={fileInputRef}
+              // style={{display:'none'}}
+              onChange={(e)=>setFile(e.target.files[0])}
+            />
+            <input
+              type='password'
+              placeholder='Password (optional)'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type='submit' onClick={getImage}>Upload</button>
+        </form>
+        {result && <a href={result} target='_blank'>{result}</a>}
       </div>
     </div>
       </>
@@ -72,6 +78,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path='/contacts' element={<Contact />}/>
+        <Route path='/download' element={<Download />}/>
       </Routes>
     </Router>
   );
