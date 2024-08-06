@@ -11,6 +11,7 @@ function Navbar() {
         </Link></div>
       <ul className="navbar-links">
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/download">download</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/contacts">Contacts</Link></li>
       </ul>
