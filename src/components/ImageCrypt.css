@@ -1,0 +1,64 @@
+.wrapper-container{
+    padding-top: 5%;
+}
+
+/* Container styling */
+.imagecrypt-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title styling */
+  .imagecrypt-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  /* Description styling */
+  .imagecrypt-description {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  /* Action buttons styling */
+  .imagecrypt-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Button styling */
+  .imagecrypt-button {
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .encrypt-btn {
+    background-color: #4caf50;
+  }
+  
+  .encrypt-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .decrypt-btn {
+    background-color: #f44336;
+  }
+  
+  .decrypt-btn:hover {
+    background-color: #e53935;
+  }
+  
