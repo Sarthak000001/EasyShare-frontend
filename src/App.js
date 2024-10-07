@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import About from './components/About';
 import Contact from './components/Contact';
 import Download from './components/Download'
+import ImageCrypt from './components/ImageCrypt';
 
 function Home() {
   const [file,setFile] = useState('');
@@ -77,6 +78,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path='/imagecrypt' element={<ImageCrypt />}/>
         <Route path='/contacts' element={<Contact />}/>
         <Route path='/download' element={<Download />}/>
       </Routes>
